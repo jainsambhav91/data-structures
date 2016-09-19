@@ -87,8 +87,6 @@ for (var i = 0; i < address.length; i++) {
 
     fs.writeFileSync('/home/ubuntu/workspace/assignment-3/address.txt',address);
 
-
-
 /*
 
 // ****************************************************
