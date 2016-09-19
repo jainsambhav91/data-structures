@@ -38,5 +38,3 @@ $('td').each(function(i, elem) {
 // $('tbody').find('tr').each(function(i, elem){
 // meetings.push($(elem).find('td').eq(0).html().split('<br>')[2].trim());
 //});
-
-
