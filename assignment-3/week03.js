@@ -58,4 +58,3 @@ async.eachSeries(address, function(value, callback) {
     console.log(meetingsData);
     fs.writeFileSync('/home/ubuntu/workspace/assignment-3/lat-long.txt',JSON.stringify(meetingsData));
 });
-
