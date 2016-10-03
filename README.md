@@ -1,13 +1,15 @@
 ### Assignment-5 Results:
 
 
-```db.meetingtimes.find().count()
+```
+db.meetingtimes.find().count()
 
 57
 ```
 
 
-```db.meetingtimes.find()
+```
+db.meetingtimes.find()
 
 { "_id" : ObjectId("57f2c2cbbb2c1e1f26840a3d"), "address" : "20 Cardinal Hayes Place", "day" : "Thursdays", "timings" : "7:00 AM to 8:00 AM", "startTime" : 700 }
 { "_id" : ObjectId("57f2c2cbbb2c1e1f26840a3e"), "address" : "20 Cardinal Hayes Place", "day" : "Tuesdays", "timings" : "7:00 AM to 8:00 AM", "startTime" : 700 }
@@ -33,7 +35,8 @@ Type "it" for more
 ```
 
 
-```db.meetingtimes.find({ day: "Tuesdays", startTime: { $gt: 1900}})
+```
+db.meetingtimes.find({ day: "Tuesdays", startTime: { $gt: 1900}})
 
 { "_id" : ObjectId("57f2ca30cfc9a821bc7da088"), "address" : "49 Fulton Street", "day" : "Tuesdays", "timings" : "7:30 PM to 8:30 PM", "startTime" : 1930 }
 { "_id" : ObjectId("57f2ca30cfc9a821bc7da08e"), "address" : "283 West Broadway", "day" : "Tuesdays", "timings" : "7:45 PM to 8:45 PM", "startTime" : 1945 }
