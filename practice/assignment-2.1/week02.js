@@ -57,6 +57,7 @@ var $ = cheerio.load(content);
 var data = [];
 var address = [];
 
+
 // $('div table tbody tr') selects the <tr> based on this hierarchy
 // .each() loops through each of the <tr>s
 $('div table tbody tr').each(function(i, elem) {
