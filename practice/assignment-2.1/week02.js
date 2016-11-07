@@ -82,8 +82,8 @@ for (var i = 0; i < data.length; i++) {
 }
 
 // show all addresses in console
-for (var i = 0; i < address.length; i++) {
-    console.log(address[i]);
+for (var i = 0; i < data.length; i++) {
+    console.log(data[i]);
 }
 
     fs.writeFileSync('/home/ubuntu/workspace/assignment-3/address.txt',address);
