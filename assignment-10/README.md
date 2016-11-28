@@ -9,3 +9,10 @@ https://data-structures-final-jainsambhav.c9users.io:8081/
 ---
 
 
+week10.js : code for AA meetings data 
+
+week10-updated.js : code for sensor data
+
+
+
+

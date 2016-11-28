@@ -3,20 +3,16 @@ var request = require('request');
 var cors = require('cors');
 
 
-//Express makes it super easy to create a server and allow routing
 var app = express();
 
-//Using cors to allow request from any URL
 app.use(cors());
-
-//Setting the port where the server will listen to
-// app.set('port', 8181);
 
 function getAAdata(){
 
-  //This is where my mongo db resides
+  //mongo db address
   var url = 'mongodb://' + process.env.IP + ':27017/aameetings';
-  var MongoClient = require('mongodb').MongoClient;
+  
+ var MongoClient = require('mongodb').MongoClient;
   
   return {
     
@@ -50,11 +46,9 @@ function getAAdata(){
 
 var AAData = getAAdata();
 
-//rendering the home page
 app.get("/",function(request, response) {
     AAData.fetchData(function(data){
-    	//This is how we return back something to a request. 
-    	//In this case Iam just returning the string representation of my json data.
+    	//Returning back the data to the request in json format.
         response.end(JSON.stringify(data));
     });
 });

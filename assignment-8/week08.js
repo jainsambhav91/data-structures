@@ -8,12 +8,11 @@ var db = 'postgres'; // aws db database name
 var ep = 'bestgpsproject.c55t6l9g9dv3.us-west-2.rds.amazonaws.com'; // aws db endpoint
 var conString = "postgres://" + un + ":" + pw + "@" + ep + "/" + db;
 
-var dropTable = "DROP TABLE IF EXISTS trackWorkTime;"
-var createTableQuery = "CREATE TABLE trackWorkTime (day text, month text, date bigint, year bigint, hour bigint, minute bigint, second bigint, duration decimal);"
-var selectAllQuery = "SELECT * FROM trackWorkTime;"
+var dropTable = "DROP TABLE IF EXISTS trackWorkTime;";
+var createTableQuery = "CREATE TABLE trackWorkTime (day text, month text, date bigint, year bigint, hour bigint, minute bigint, second bigint, duration decimal);";
+var selectAllQuery = "SELECT * FROM trackWorkTime;";
 
-
-var complexQuery = "SELECT * FROM trackWorkTime ORDER BY date, hour, minute, second asc;"
+var complexQuery = "SELECT * FROM trackWorkTime ORDER BY date, hour, minute, second asc;";
 
 var getValues = function(){
     var output = fs.readFileSync('sensorOutput.txt').toString();
@@ -50,7 +49,7 @@ var getValues = function(){
      
       data.push(obj)
      }
-    // console.log(data); 
+    console.log(data); 
     return data; 
   }
   
