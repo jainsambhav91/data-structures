@@ -14,5 +14,12 @@ week10.js : code for AA meetings data
 week10-updated.js : code for sensor data
 
 
+---
+
+AA Meetings URL result:
+![](aa.png) 
+
+Hall Sensor URL reult:
+![](hall.png) 
 
 
