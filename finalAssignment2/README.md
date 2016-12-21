@@ -13,6 +13,10 @@ sensor-output.js : code to display aggregated data from PostgreSQL database
 
 ---
 
+Apparatus:
+![](sensor.jpg) 
+
+
 Raw Data:
 ![](sensorData.jpg) 
 
