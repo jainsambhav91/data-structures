@@ -1,0 +1,113 @@
+;
+
+        function makeContent(cont) {
+            var contentHolder = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>';
+            
+            var gmt = new Date ();
+            var est = new Date ( gmt );
+            est.setHours ( gmt.getHours() - 5 );
+        
+            var days = [ 'Sundays', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays'];
+    
+            var currentDay = days[est.getUTCDay()];
+            
+            
+            cont.meetingGroups.sort(function (a, b) {
+                      if (a.startTime > b.startTime) {
+                        return 1;
+                      }
+                      if (a.startTime < b.startTime) {
+                        return -1;
+                      }
+                      return 0;
+                    });    
+                
+                
+            for (var i = 0; i < cont.meetingGroups.length; i++) {
+            
+            if(i==0){
+                contentHolder = contentHolder + '<h2>' + cont._id.address.substr(0, cont._id.address.indexOf(',')) + '</h2>';
+            }
+                
+            if( cont.meetingGroups[i].day == currentDay) {
+            
+                contentHolder = contentHolder + '<b>' + 
+                                cont.meetingGroups[i].title + '</b>  <br>' + 
+                                cont.meetingGroups[i].day +  ', ' + 
+                                cont.meetingGroups[i].timings + '<br> ' + 
+                                cont.meetingGroups[i].type.substring(cont.meetingGroups[i].type.indexOf('=') + 1, 30) + '<br>' ;
+
+                contentHolder = contentHolder + '</p>';
+                contentHolder = contentHolder + '<div class="iw-bottom-gradient"></div>';
+                } else {
+                
+                contentHolder = contentHolder + '<b>' + 
+                                cont.meetingGroups[i].title + '</b>  <br>' + 
+                                cont.meetingGroups[i].day +  ', ' + 
+                                cont.meetingGroups[i].timings + '<br> ' + 
+                                cont.meetingGroups[i].type.substring(cont.meetingGroups[i].type.indexOf('=') + 1, 30) + '<br>' ;
+
+                contentHolder = contentHolder + '</p>';
+                contentHolder = contentHolder + '<div class="iw-bottom-gradient"></div>';
+                }
+                
+            }
+            return contentHolder;
+        }
+
+        function setMarkers(map, locations) {
+            // Add markers to the map
+            var infowindow = new google.maps.InfoWindow({
+                maxWidth: 200
+            });
+
+            for (var i = 0; i < locations.length; i++) {
+                var meeting = locations[i];
+                var myLatLng = new google.maps.LatLng(meeting.meetingGroups[0].latLong.lat, meeting.meetingGroups[0].latLong.lng);
+
+                var contentWindow = makeContent(meetings[i]);
+                
+
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: "Click for meeting info",
+                    content: contentWindow
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent(this.content);
+                    infowindow.open(map, this);
+                });
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+        
+        
+            
+    </script>
+</head>
+
+
+<body style="background-color: lightGray">
+    <div style="background-color: lightGray"> <h1  style="font-family: helvetica; margin-left: 2%">AA meetings in Manhattan</h1><p id="desc" style="font-family: helvetica; margin-left: 2%"></p></div>
+    <div id="map-canvas"></div>
+</body>
+
+<script>
+        var gmt = new Date ();
+        var est = new Date ( gmt );
+        est.setHours ( gmt.getHours() -5 );
+        
+        var days = [ 'Sundays', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays'];
+    
+        var currentDay = days[est.getUTCDay()];
+        
+        var nextDay = (days.indexOf(currentDay) + 1)>6 ? days[0] : days[days.indexOf(currentDay) + 1]
+        
+        document.getElementById("desc").innerHTML = "Showing meetings between now and " + nextDay + ", 0400 hours: ";
+</script>
+
+</html>
